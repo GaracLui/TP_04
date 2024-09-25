@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc055b4de1bc85438d8d3bc843b9124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSection: {fileID: 6091139529883198155, guid: c2b110d7f7b3e774b99ea881943ec6fe, type: 3}
+  roadSection: {fileID: 5922813978131377064, guid: 0446d75b6a558fb4d89d5349267a9d25, type: 3}
 --- !u!54 &4947236051287277225
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,8 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myMaterials:
   - {fileID: 2100000, guid: 429dddc94cfb61c428bb141ab3791ea5, type: 2}
-  currentValue: 0
-  targetValue: 0
   lerpTime: 5
 --- !u!1 &3110195113255005960
 GameObject:
