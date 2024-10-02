@@ -14,7 +14,7 @@ public class Move_Plane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0,0, -18) * Time.deltaTime;
+        transform.position += new Vector3(0,0, -26) * Time.deltaTime;
     }
 
 
