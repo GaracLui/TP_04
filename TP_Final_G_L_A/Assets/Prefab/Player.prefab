@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myMaterials:
   - {fileID: 2100000, guid: 429dddc94cfb61c428bb141ab3791ea5, type: 2}
+  - {fileID: 2100000, guid: 36183c9dcd81a8a4dbe3bab2ae30c647, type: 2}
   lerpTime: 5
 --- !u!114 &3175109391897730003
 MonoBehaviour:
