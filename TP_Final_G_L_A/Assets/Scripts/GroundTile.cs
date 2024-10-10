@@ -16,4 +16,6 @@ public class GroundTile : MonoBehaviour
         groundSpawner.SpawnTile(true);
         Destroy(gameObject, 2);
     }
+
+
 }
