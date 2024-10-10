@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7950088882143749045}
   m_Layer: 0
   m_Name: Tree_Fern_Medium_SumAut
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

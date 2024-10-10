@@ -1,41 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float laneWidth = 2f;
-    public float moveSpeed = 10f;
+    
+    public float runSpeed = 10f;
+    public float minSpeed = 10f;
+    public float maxSpeed = 30f;
+    public float laneChangeSpeed = 10f;
+    public float laneSize = 2f;
 
-    private float targetLane = 0f;
-    private float currentLane = 0f;
+    private Rigidbody rb;
+    private Vector3 targetPosition;
 
-    void Update()
+    void Start()
     {
-        // Handle input
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            // no se pone en -4 porque al utilizar MathfLerp termina cambiando su posición en por ejemplo -3.993
-            if(currentLane >= -3)
-            {
-                targetLane -= laneWidth;
-            }
-          
-            
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            // no se pone en 4 porque al utilizar MathfLerp termina cambiando su posición en por ejemplo -3.993
-            if (currentLane <= 3)
-            {
-                targetLane += laneWidth;
-            }
-        }
+        rb = GetComponent<Rigidbody>();
 
-        // Move towards target lane
-        currentLane = Mathf.Lerp(currentLane, targetLane, moveSpeed * Time.deltaTime);
+    }
 
-        // Apply movement to the player's position
-        transform.position = new Vector3(currentLane, transform.position.y, transform.position.z);
+
+
+    private void Update()
+    {
+        MoveCharacter();
+
+       
+    }
+
+    void FixedUpdate()
+    {
+        rb.velocity = Vector3.forward * runSpeed;
+    }
+
+    void MoveCharacter()
+    {
+        HandleKeyboard();
+        Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
+        transform.localPosition = Vector3.MoveTowards(transform.position, newPosition, laneChangeSpeed * Time.deltaTime);
+    }
+
+    void HandleKeyboard()
+    {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) ChangeLane(-1);
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) ChangeLane(1);
+
+    }
+
+    void ChangeLane(int direction)
+    {
+        float targetLane = targetPosition.x + direction * laneSize;
+
+        if (targetLane >= -4f && targetLane <= 4f)
+        {
+            targetPosition.x = targetLane;
+        }
+    }
+
+
+    public void IncreaseSpeed()
+    {
+        runSpeed *= 1.1f;
+        runSpeed = (runSpeed >= maxSpeed) ? maxSpeed : runSpeed;
     }
 }

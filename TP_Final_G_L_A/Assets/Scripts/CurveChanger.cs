@@ -14,24 +14,36 @@ public class CurveChanger : MonoBehaviour
     private bool isComplete = true;
 
 
+    private float timeBetweenDoingSomething = 5f;  //Wait 5 seconds after we do something to do something again
+    private float timeWhenWeNextDoSomething;  //The next time we do something
+
+
+
     private void Start()
     {
         foreach(Material material in myMaterials)
         {
             currentValue = material.GetFloat("_Sideway_Strength");
         }
+
+        timeWhenWeNextDoSomething = Time.time + timeBetweenDoingSomething;
     }
 
+    void Update()
+    {
+        if (timeWhenWeNextDoSomething <= Time.time)
+        {
+            //Do something here
+
+            timeWhenWeNextDoSomething = Time.time + timeBetweenDoingSomething;
+        }
+    }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Curve"))
-        {
-            if (isComplete)
+        if (isComplete)
             {
                 StartCoroutine(changeCurveStrength());
             }
-
-        }
     }
 
     public IEnumerator changeCurveStrength()

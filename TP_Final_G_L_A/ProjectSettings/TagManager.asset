@@ -8,6 +8,8 @@ TagManager:
   - Destroy
   - Curve
   - Base_Section_Size
+  - Obstacle
+  - Food
   layers:
   - Default
   - TransparentFX

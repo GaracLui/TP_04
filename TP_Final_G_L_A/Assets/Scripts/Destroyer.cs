@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move_Plane : MonoBehaviour
+public class Destroyer : MonoBehaviour
 {
-    // All credits for https://www.youtube.com/@RigorMortisTortoise
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +13,12 @@ public class Move_Plane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0,0, -26) * Time.deltaTime;
+        
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Destroy"))
-        {
-            Destroy(gameObject);
-        }
+        Destroy(other);
+        
     }
 }
