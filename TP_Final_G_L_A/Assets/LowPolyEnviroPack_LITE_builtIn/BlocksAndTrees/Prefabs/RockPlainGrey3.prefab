@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33213876516036320}
   - component: {fileID: 23838477550258066}
   - component: {fileID: 698365674922294927}
-  - component: {fileID: 8267019383153588539}
   m_Layer: 0
   m_Name: RockPlainGrey3
   m_TagString: Obstacle
@@ -108,26 +107,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &8267019383153588539
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369417078929220}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.578896
-  m_Height: 1.1154613
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5500846, z: -0.000000029802322}

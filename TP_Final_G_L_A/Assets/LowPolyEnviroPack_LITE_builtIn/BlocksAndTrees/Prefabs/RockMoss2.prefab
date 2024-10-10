@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33739066490905694}
   - component: {fileID: 23935030504685412}
   - component: {fileID: 4094044291041221527}
-  - component: {fileID: -2601080296787488177}
   m_Layer: 0
   m_Name: RockMoss2
   m_TagString: Obstacle
@@ -108,26 +107,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &-2601080296787488177
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998902259639074}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.31785607
-  m_Height: 0.7142415
-  m_Direction: 1
-  m_Center: {x: -0.0000009983778, y: 0.3484587, z: -0.00000010430813}
