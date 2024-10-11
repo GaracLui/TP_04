@@ -15,7 +15,7 @@ public class GroundSpawner : MonoBehaviour
         if (spawnItems)
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
-            //temp.GetComponent<GroundTile>().SpawnCoins();
+            temp.GetComponent<GroundTile>().SpawnFood();
         }
     }
 
@@ -23,6 +23,7 @@ public class GroundSpawner : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
+            // en los primeros dos no abra objetos
             if (i < 2)
             {
                 SpawnTile(false);

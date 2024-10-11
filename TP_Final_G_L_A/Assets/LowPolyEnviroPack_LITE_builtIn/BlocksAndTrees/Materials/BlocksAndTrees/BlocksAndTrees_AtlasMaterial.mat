@@ -66,7 +66,7 @@ Material:
     m_Floats:
     - _Backward_Strength: 0.0019
     - _Glossiness: 0.09
-    - _Sideway_Strength: 0.003283217
+    - _Sideway_Strength: 0.00026974268
     - _Tile_Strength: 1
     m_Colors:
     - _EmissionColor: {r: 0.6964404, g: 0.6964404, b: 0.6964404, a: 1}

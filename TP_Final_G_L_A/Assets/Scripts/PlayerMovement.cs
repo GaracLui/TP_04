@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 targetPosition;
+    private bool alive = true;
 
     void Start()
     {
@@ -33,14 +35,19 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!alive) return;
+
         rb.velocity = Vector3.forward * runSpeed;
     }
 
     void MoveCharacter()
     {
-        HandleKeyboard();
-        Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
-        transform.localPosition = Vector3.MoveTowards(transform.position, newPosition, laneChangeSpeed * Time.deltaTime);
+        if (alive) 
+        { 
+            HandleKeyboard();
+            Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
+            transform.localPosition = Vector3.MoveTowards(transform.position, newPosition, laneChangeSpeed * Time.deltaTime);
+        }
     }
 
     void HandleKeyboard()
@@ -63,7 +70,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void IncreaseSpeed()
     {
-        runSpeed *= 1.1f;
+        runSpeed *= 1.01f;
         runSpeed = (runSpeed >= maxSpeed) ? maxSpeed : runSpeed;
     }
+
+    public void Die()
+    {
+        alive = false;
+        
+    }
+
 }
