@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    PlayerMovement playerMovement;
+    [SerializeField] PlayerMovement playerMovement;
 
     private void Start()
     {
+
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.name != "Player")
         {
-            // Kill the player
-            playerMovement.Die();
+            return;
         }
+
+
+        // Kill the player
+        playerMovement.Die();
+  
     }
 
     private void Update()

@@ -7,8 +7,11 @@ public class CurveChanger : MonoBehaviour
     // All credits for https://www.youtube.com/@RigorMortisTortoise
     public Material[] myMaterials;
 
-    private float currentValue;
-    private float targetValue;
+    private float currentValueX;
+    private float targetValueX;
+
+    private float currentValueY;
+    private float targetValueY;
 
     public float lerpTime;
     private bool isComplete = true;
@@ -23,7 +26,8 @@ public class CurveChanger : MonoBehaviour
     {
         foreach(Material material in myMaterials)
         {
-            currentValue = material.GetFloat("_Sideway_Strength");
+            currentValueX = material.GetFloat("_Sideway_Strength");
+            currentValueY = material.GetFloat("_Backward_Strength");
         }
 
         timeWhenWeNextDoSomething = Time.time + timeBetweenDoingSomething;
@@ -49,24 +53,28 @@ public class CurveChanger : MonoBehaviour
     public IEnumerator changeCurveStrength()
     {
         float elapsedTime = 0;
-        targetValue = Random.Range(-.005f,.005f);
+        targetValueX = Random.Range(-.005f,.005f);
+        targetValueY = Random.Range(-.001f, .001f);
 
-        while(elapsedTime < lerpTime)
+        while (elapsedTime < lerpTime)
         {
             isComplete = false;
 
-            currentValue = Mathf.Lerp(currentValue, targetValue, elapsedTime / lerpTime);
+            currentValueX = Mathf.Lerp(currentValueX, targetValueX, elapsedTime / lerpTime);
+            currentValueY = Mathf.Lerp(currentValueY, targetValueY, elapsedTime / lerpTime);
             elapsedTime += Time.deltaTime;
 
             foreach (Material material in myMaterials)
             {
-                material.SetFloat("_Sideway_Strength", currentValue);
+                material.SetFloat("_Sideway_Strength", currentValueX);
+                material.SetFloat("_Backward_Strength", currentValueY);
             }
 
             yield return null;
         }
 
         isComplete = true;
-        currentValue = targetValue;
+        currentValueX = targetValueX;
+        currentValueY = targetValueY;
     }
 }

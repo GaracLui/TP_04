@@ -42,12 +42,11 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveCharacter()
     {
-        if (alive) 
-        { 
-            HandleKeyboard();
-            Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
-            transform.localPosition = Vector3.MoveTowards(transform.position, newPosition, laneChangeSpeed * Time.deltaTime);
-        }
+        if (!alive) return;
+
+        HandleKeyboard();
+        Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
+        transform.localPosition = Vector3.MoveTowards(transform.position, newPosition, laneChangeSpeed * Time.deltaTime);
     }
 
     void HandleKeyboard()
@@ -74,8 +73,15 @@ public class PlayerMovement : MonoBehaviour
         runSpeed = (runSpeed >= maxSpeed) ? maxSpeed : runSpeed;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.CompareTag("Obstacle")) Die();
+    }
     public void Die()
     {
+        Time.timeScale = 0;
+        runSpeed = 0;
         alive = false;
         
     }

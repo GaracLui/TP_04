@@ -9,7 +9,7 @@ public class GroundTile : MonoBehaviour
     [SerializeField] private int rangoObstaculoRandom = 1;
 
     [SerializeField] GameObject foodPrefab;
-
+    [SerializeField] private int foodsToSpawn = 10;
 
     private void Start()
     {
@@ -57,7 +57,7 @@ public class GroundTile : MonoBehaviour
 
     public void SpawnFood()
     {
-        int foodsToSpawn = 10;
+        
         int obstacleSpawnIndex = 2;
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
         int auxiliarVeces = 0;
