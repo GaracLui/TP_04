@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public void IncrementScore()
     {
         score++;
-        scoreText.text = "FOOD: " + score;
+        scoreText.text = "COMIDA: " + score;
         // Increase the player's speed
         playerMovement.IncreaseSpeed();
     }

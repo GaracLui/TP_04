@@ -286,6 +286,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7403220292809229910, guid: e4fd3842e3206a949b440f56896f1330, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b5b2972d1bd6034ea34771f6d36d7e3, type: 2}
     - target: {fileID: 919132149155446097, guid: e4fd3842e3206a949b440f56896f1330, type: 3}
       propertyPath: m_Name
       value: Rabbit

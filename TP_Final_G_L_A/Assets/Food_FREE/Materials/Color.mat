@@ -33,8 +33,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Backward_Strength: -0.0009978585
-    - _Sideway_Strength: 0.0021384512
+    - _Backward_Strength: 0.00040979643
+    - _Sideway_Strength: -0.00054292235
     - _Tile_Strength: 1
     m_Colors: []
   m_BuildTextureStacks: []
