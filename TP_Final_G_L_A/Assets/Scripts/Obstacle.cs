@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] private PlayerMovement playerMovement;
 
     private void Start()
     {

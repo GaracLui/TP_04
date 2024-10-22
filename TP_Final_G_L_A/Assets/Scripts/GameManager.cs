@@ -6,12 +6,12 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    int score;
+    [SerializeField] private int score;
     public static GameManager inst;
 
-    [SerializeField] TMP_Text scoreText;
+    [SerializeField] private TMP_Text scoreText;
 
-    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] private PlayerMovement playerMovement;
 
     public void IncrementScore()
     {

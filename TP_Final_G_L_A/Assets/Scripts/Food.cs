@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    [SerializeField] float turnSpeed = 90f;
+    [SerializeField] private float turnSpeed = 90f;
 
     private void OnTriggerEnter(Collider other)
     {

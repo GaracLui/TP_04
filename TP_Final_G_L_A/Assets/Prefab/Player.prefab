@@ -119,8 +119,10 @@ MonoBehaviour:
   runSpeed: 10
   minSpeed: 10
   maxSpeed: 30
+  multiplySpeed: 1.01
   laneChangeSpeed: 10
   laneSize: 2
+  animation: {fileID: 218355021731702430}
 --- !u!114 &121427923373230320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,11 +296,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rabbit
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: e4fd3842e3206a949b440f56896f1330, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d68b4ced15f3911498fc15778a28d440, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4fd3842e3206a949b440f56896f1330, type: 3}
+--- !u!95 &218355021731702430 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: e4fd3842e3206a949b440f56896f1330, type: 3}
+  m_PrefabInstance: {fileID: 5939497035391376143}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6190176147557350628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e4fd3842e3206a949b440f56896f1330, type: 3}

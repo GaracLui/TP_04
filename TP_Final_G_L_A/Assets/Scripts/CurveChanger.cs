@@ -5,7 +5,7 @@ using UnityEngine;
 public class CurveChanger : MonoBehaviour
 {
     // All credits for https://www.youtube.com/@RigorMortisTortoise
-    public Material[] myMaterials;
+    [SerializeField] private Material[] myMaterials;
 
     private float currentValueX;
     private float targetValueX;
@@ -13,7 +13,7 @@ public class CurveChanger : MonoBehaviour
     private float currentValueY;
     private float targetValueY;
 
-    public float lerpTime;
+    [SerializeField] private float lerpTime;
     private bool isComplete = true;
 
 

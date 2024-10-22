@@ -7,20 +7,30 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
-    public float runSpeed = 10f;
-    public float minSpeed = 10f;
-    public float maxSpeed = 30f;
-    public float laneChangeSpeed = 10f;
-    public float laneSize = 2f;
+
+    [SerializeField] private float runSpeed = 10f;
+    [SerializeField] private float minSpeed = 10f;
+    [SerializeField] private float maxSpeed = 30f;
+    [SerializeField] private float multiplySpeed = 1.01f;
+
+    [SerializeField] private float laneChangeSpeed = 10f;
+    [SerializeField] private float laneSize = 2f;
+
+
 
     private Rigidbody rb;
     private Vector3 targetPosition;
     private bool alive = true;
 
+
+    [SerializeField] private Animator animar;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        targetPosition = transform.position;
+        animar.SetFloat("velocidadX", 0);
+        animar.SetFloat("velocidadZ", 0);
 
     }
 
@@ -69,8 +79,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void IncreaseSpeed()
     {
-        runSpeed *= 1.01f;
-        runSpeed = (runSpeed >= maxSpeed) ? maxSpeed : runSpeed;
+        runSpeed *= multiplySpeed;
+        runSpeed = Mathf.Clamp(runSpeed, minSpeed, maxSpeed);
+        //runSpeed = (runSpeed >= maxSpeed) ? maxSpeed : runSpeed;
     }
 
     void OnTriggerEnter(Collider other)

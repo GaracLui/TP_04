@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GroundTile : MonoBehaviour
 {
-    [SerializeField] GroundSpawner groundSpawner;
+    [SerializeField] private GroundSpawner groundSpawner;
     [SerializeField] private List<GameObject> obstaclePrefab;
     [SerializeField] private int rangoObstaculoRandom = 1;
 
-    [SerializeField] GameObject foodPrefab;
+    [SerializeField] private GameObject foodPrefab;
     [SerializeField] private int foodsToSpawn = 10;
 
     private void Start()

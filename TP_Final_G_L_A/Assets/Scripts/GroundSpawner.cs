@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GroundSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject groundTile;
-    Vector3 nextSpawnPoint;
+    [SerializeField] private GameObject groundTile;
+    private Vector3 nextSpawnPoint;
 
     public void SpawnTile(bool spawnItems)
     {

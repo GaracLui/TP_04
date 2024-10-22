@@ -5,7 +5,7 @@ using UnityEngine;
 public class Section_Trigger : MonoBehaviour
 {
     // All Credits for https://www.youtube.com/@RigorMortisTortoise
-    public GameObject roadSection;
+    [SerializeField] private GameObject roadSection;
     
     private void OnTriggerEnter(Collider other)
     {
