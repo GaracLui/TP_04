@@ -24,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private Animator animar;
-    [SerializeField] private GameManager end ;
+
+    [SerializeField] private GameManager manager ;
 
     void Start()
     {
@@ -62,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleKeyboard()
     {
+        if (!alive) return;
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) ChangeLane(-1);
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) ChangeLane(1);
 
@@ -69,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
 
     void ChangeLane(int direction)
     {
+        if (!alive) return;
+
         float targetLane = targetPosition.x + direction * laneSize;
 
         if (targetLane >= -4f && targetLane <= 4f)
@@ -80,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void IncreaseSpeed()
     {
+        if (!alive) return;
+
         runSpeed *= multiplySpeed;
         runSpeed = Mathf.Clamp(runSpeed, minSpeed, maxSpeed);
         //runSpeed = (runSpeed >= maxSpeed) ? maxSpeed : runSpeed;
@@ -95,6 +101,8 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 0;
         runSpeed = 0;
         alive = false;
+
+        manager.Pause();
         
     }
 

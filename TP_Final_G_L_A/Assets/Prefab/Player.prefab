@@ -122,7 +122,8 @@ MonoBehaviour:
   multiplySpeed: 1.01
   laneChangeSpeed: 10
   laneSize: 2
-  animation: {fileID: 218355021731702430}
+  animar: {fileID: 218355021731702430}
+  manager: {fileID: 780210597091839685, guid: d99e295deb8b8c942934c9b931726c31, type: 3}
 --- !u!114 &121427923373230320
 MonoBehaviour:
   m_ObjectHideFlags: 0

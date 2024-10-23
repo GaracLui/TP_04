@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
-    private int score;
+    private int score = 0;
     public static GameManager inst;
+
+    //[SerializeField] private MainMenu menu;
 
     [SerializeField] private GameObject scoreObject;
     [SerializeField] private TMP_Text scoreText;
@@ -18,7 +21,9 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private TMP_Text distanceText;
+
+    [SerializeField] private TMP_Text pauseDistanceText;
+    [SerializeField] private TMP_Text pauseScoreText;
 
     public void IncrementScore()
     {
@@ -35,7 +40,14 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
+        Time.timeScale = 1;
+        scoreObject.SetActive(false);
         pauseMenu.SetActive(true);
+
+        pauseScoreText.text = "COMIDA: " + score;
+        pauseDistanceText.text = "DISTANCIA: " + playerObject.transform.position.z;
+
+        //MainMenu.inst.UnlockNextLevel(score, SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Restart()
@@ -45,6 +57,6 @@ public class GameManager : MonoBehaviour
 
     public void MainMenu()
     {
-
+        SceneManager.LoadScene(0);
     }
 }
