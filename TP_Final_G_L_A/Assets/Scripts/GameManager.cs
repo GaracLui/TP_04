@@ -40,13 +40,14 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         scoreObject.SetActive(false);
         pauseMenu.SetActive(true);
 
         pauseScoreText.text = "COMIDA: " + score;
-        pauseDistanceText.text = "DISTANCIA: " + playerObject.transform.position.z;
+        pauseDistanceText.text = "DISTANCIA: " + (int)playerObject.transform.position.z;
 
+        //Time.timeScale = 0;
         //MainMenu.inst.UnlockNextLevel(score, SceneManager.GetActiveScene().buildIndex);
     }
 

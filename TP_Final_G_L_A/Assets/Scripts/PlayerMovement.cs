@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
     public void Die()
     {
         Time.timeScale = 0;
+        minSpeed = 0;
         runSpeed = 0;
         alive = false;
 
