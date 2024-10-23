@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private Animator animar;
+    [SerializeField] private GameManager end ;
 
     void Start()
     {

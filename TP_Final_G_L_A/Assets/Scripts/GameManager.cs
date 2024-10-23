@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int score;
+    private int score;
     public static GameManager inst;
 
+    [SerializeField] private GameObject scoreObject;
     [SerializeField] private TMP_Text scoreText;
 
+    [SerializeField] private GameObject playerObject;
     [SerializeField] private PlayerMovement playerMovement;
+
+
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private TMP_Text distanceText;
 
     public void IncrementScore()
     {
@@ -26,12 +33,17 @@ public class GameManager : MonoBehaviour
         inst = this;
     }
 
-    private void Start()
+    public void Pause()
     {
-       
+        pauseMenu.SetActive(true);
     }
 
-    private void Update()
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu()
     {
 
     }
