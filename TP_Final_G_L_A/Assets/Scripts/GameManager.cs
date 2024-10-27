@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     public static GameManager inst;
 
-    //[SerializeField] private MainMenu menu;
 
     [SerializeField] private GameObject scoreObject;
     [SerializeField] private TMP_Text scoreText;
@@ -40,24 +39,96 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        //Time.timeScale = 1;
+
         scoreObject.SetActive(false);
         pauseMenu.SetActive(true);
 
         pauseScoreText.text = "COMIDA: " + score;
         pauseDistanceText.text = "DISTANCIA: " + (int)playerObject.transform.position.z;
 
-        //Time.timeScale = 0;
-        //MainMenu.inst.UnlockNextLevel(score, SceneManager.GetActiveScene().buildIndex);
+        // actuliza datos segun el nivel
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 1:
+                // primavera score
+                if (PlayerPrefs.HasKey("SpringMaxScore"))
+                {
+                    if (score > PlayerPrefs.GetInt("SpringMaxScore"))
+                    {
+                        PlayerPrefs.SetInt("SpringMaxScore", score);
+                    }
+                }
+                else
+                {
+                    //si no se inicio el maximo score
+                    PlayerPrefs.SetInt("SpringMaxScore", score);
+                }
+                // fin primavera score
+                break;
+            case 2:
+                // Verano score
+                if (PlayerPrefs.HasKey("SummerMaxScore"))
+                {
+                    if (score > PlayerPrefs.GetInt("SummerMaxScore"))
+                    {
+                        PlayerPrefs.SetInt("SummerMaxScore", score);
+                    }
+                }
+                else
+                {
+                    //si no se inicio el maximo score
+                    PlayerPrefs.SetInt("SummerMaxScore", score);
+                }
+                // fin Verano score
+                break;
+            case 3:
+                // Otoño score
+                if (PlayerPrefs.HasKey("FallMaxScore"))
+                {
+                    if (score > PlayerPrefs.GetInt("FallMaxScore"))
+                    {
+                        PlayerPrefs.SetInt("FallMaxScore", score);
+                    }
+                }
+                else
+                {
+                    //si no se inicio el maximo score
+                    PlayerPrefs.SetInt("FallMaxScore", score);
+                }
+                // fin Otoño score
+                break;
+            case 4:
+                // Invierno score
+                if (PlayerPrefs.HasKey("WinterMaxScore"))
+                {
+                    if (score > PlayerPrefs.GetInt("WinterMaxScore"))
+                    {
+                        PlayerPrefs.SetInt("WinterMaxScore", score);
+                    }
+                }
+                else
+                {
+                    //si no se inicio el maximo score
+                    PlayerPrefs.SetInt("WinterMaxScore", score);
+                }
+                // fin Invierno score
+                break;
+            default:
+                break;
+
+        }
     }
 
     public void Restart()
     {
+        score = 0;
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 }

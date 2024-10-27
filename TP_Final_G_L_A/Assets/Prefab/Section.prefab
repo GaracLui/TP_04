@@ -107,6 +107,8 @@ MonoBehaviour:
   - {fileID: 1207747102172192, guid: bce25126e31ab73468149b3d48ab59fd, type: 3}
   - {fileID: 1033100020344506, guid: 5a334219ce0aa8244b7c4bd7a9053d1e, type: 3}
   - {fileID: 1234744878446904, guid: b73cf569485a755408a584e65c222404, type: 3}
+  - {fileID: 1468300492083680, guid: 3201c303f4d42d44d8983a2933d99b1e, type: 3}
+  - {fileID: 1117656638337092, guid: 58a4143ad12df18489714487a5df1725, type: 3}
   rangoObstaculoRandom: 2
   foodPrefab: {fileID: 2247890650161004165, guid: 31ec181664c141943b9c7bee2d073cbf, type: 3}
   foodsToSpawn: 10

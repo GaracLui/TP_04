@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         targetPosition = transform.position;
         animar.SetFloat("velocidadX", 0);
         animar.SetFloat("velocidadZ", 0);
-
+        alive = true;
     }
 
 
@@ -99,8 +99,7 @@ public class PlayerMovement : MonoBehaviour
     public void Die()
     {
         Time.timeScale = 0;
-        minSpeed = 0;
-        runSpeed = 0;
+
         alive = false;
 
         manager.Pause();
