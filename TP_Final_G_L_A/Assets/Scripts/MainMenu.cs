@@ -20,11 +20,11 @@ public class MainMenu : MonoBehaviour
 
 
     public bool unlockScene2 = false;
-    [SerializeField] private int scoreMeta2 = 30;
+    [SerializeField] private int scoreMeta2 = 50;
     [SerializeField] private UnityEngine.UI.Button buttonSummer;
 
     public bool unlockScene3 = false;
-    [SerializeField] private int scoreMeta3 = 50;
+    [SerializeField] private int scoreMeta3 = 70;
     [SerializeField] private UnityEngine.UI.Button buttonFall;
 
     public bool unlockScene4 = false;
@@ -80,8 +80,22 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("SummerMaxScore", 0);
             buttonFall.interactable = false;
         }
-
-        scoreTextSummer.text = " MAX: " + PlayerPrefs.GetInt("SummerMaxScore");
+        // informar al usuario
+        if ((PlayerPrefs.GetInt("SummerMaxScore") <= 0) && (PlayerPrefs.GetInt("SpringMaxScore" ) >= scoreMeta2))
+        {
+            scoreTextSummer.text = " DESBLOQUEADO";
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("SummerMaxScore") > 0)
+            {
+                scoreTextSummer.text = " MAX: " + PlayerPrefs.GetInt("SummerMaxScore");
+            }
+            else
+            {
+                scoreTextSummer.text = $" NECESITAS {scoreMeta2} PUNTOS";
+            }
+        }
         // fin Verano score
 
 
@@ -104,8 +118,22 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("FallMaxScore", 0);
             buttonWinter.interactable = false;
         }
-
-        scoreTextFall.text = " MAX: " + PlayerPrefs.GetInt("FallMaxScore");
+        // informar al usuario
+        if ((PlayerPrefs.GetInt("FallMaxScore") <= 0) && (PlayerPrefs.GetInt("SummerMaxScore") >= scoreMeta3))
+        {
+            scoreTextFall.text = " DESBLOQUEADO";
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("FallMaxScore") > 0)
+            {
+                scoreTextFall.text = " MAX: " + PlayerPrefs.GetInt("FallMaxScore");
+            }
+            else
+            {
+                scoreTextFall.text = $" NECESITAS {scoreMeta3} PUNTOS";
+            }
+        }
         // fin Otoño score
 
 
@@ -117,7 +145,22 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("WinterMaxScore", 0);
            
         }
-        scoreTextWinter.text = " MAX: " + PlayerPrefs.GetInt("WinterMaxScore");
+        // informar al usuario
+        if ((PlayerPrefs.GetInt("WinterMaxScore") <= 0) && (PlayerPrefs.GetInt("FallMaxScore") >= scoreMeta4))
+        {
+            scoreTextWinter.text = " DESBLOQUEADO";
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("WinterMaxScore") > 0)
+            {
+                scoreTextWinter.text = " MAX: " + PlayerPrefs.GetInt("WinterMaxScore");
+            }
+            else
+            {
+                scoreTextWinter.text = $" NECESITAS {scoreMeta4} PUNTOS";
+            }
+        }
         // fin Invierno score
 
         //buttonSummer.interactable = unlockScene2 ? true : false;
