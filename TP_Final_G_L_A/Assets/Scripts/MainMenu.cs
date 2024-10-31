@@ -16,19 +16,21 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMP_Text scoreTextWinter;
 
 
+    private string keySpring = "SpringMaxScore";
+    private string keySummer = "SummerMaxScore";
+    private string keyFall = "FallMaxScore";
+    private string keyWinter = "WinterMaxScore";
 
-
-
-    public bool unlockScene2 = false;
-    [SerializeField] private int scoreMeta2 = 50;
+    public bool unlockSceneSummer = false;
+    [SerializeField] private int scoreMetaSummer = 50;
     [SerializeField] private UnityEngine.UI.Button buttonSummer;
 
-    public bool unlockScene3 = false;
-    [SerializeField] private int scoreMeta3 = 70;
+    public bool unlockSceneFall = false;
+    [SerializeField] private int scoreMetaFall = 70;
     [SerializeField] private UnityEngine.UI.Button buttonFall;
 
-    public bool unlockScene4 = false;
-    [SerializeField] private int scoreMeta4 = 100;
+    public bool unlockSceneWinter = false;
+    [SerializeField] private int scoreMetaWinter = 100;
     [SerializeField] private UnityEngine.UI.Button buttonWinter;
 
 
@@ -40,10 +42,25 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        // primer nivel ingresa "" o " " como previo nivel
+        CheckKeyScoreAndUnlockLevel(keySpring, scoreMetaSummer, buttonSummer);
+        UpdateScoreText(keySpring, "", 0, scoreTextSpring);
+
+        CheckKeyScoreAndUnlockLevel(keySummer, scoreMetaFall, buttonFall);
+        UpdateScoreText(keySummer, keySpring, scoreMetaSummer, scoreTextSummer);
+
+        CheckKeyScoreAndUnlockLevel(keyFall, scoreMetaWinter, buttonWinter);
+        UpdateScoreText(keyFall, keySummer, scoreMetaFall, scoreTextFall);
+
+        // ultimo nivel ingresa 0 como la meta del siguiente nivel
+        CheckKeyScoreAndUnlockLevel(keyWinter, 0, buttonWinter);
+        UpdateScoreText(keyWinter, keyFall, scoreMetaWinter, scoreTextWinter);
+
+        /*
         // primavera score
         if (PlayerPrefs.HasKey("SpringMaxScore"))
         {
-            if (scoreMeta2 <= PlayerPrefs.GetInt("SpringMaxScore"))
+            if (scoreMetaSummer <= PlayerPrefs.GetInt("SpringMaxScore"))
             {
                 buttonSummer.interactable = true;
             }
@@ -59,13 +76,13 @@ public class MainMenu : MonoBehaviour
             buttonSummer.interactable = false;
         }
 
-        scoreTextSpring.text = " MAX: " + PlayerPrefs.GetInt("SpringMaxScore");
+        scoreTextSpring.text = " PUNTOS: " + PlayerPrefs.GetInt("SpringMaxScore");
         // fin primavera score
 
         // Verano score
         if (PlayerPrefs.HasKey("SummerMaxScore"))
         {
-            if (scoreMeta3 <= PlayerPrefs.GetInt("SummerMaxScore"))
+            if (scoreMetaFall <= PlayerPrefs.GetInt("SummerMaxScore"))
             {
                 buttonFall.interactable = true;
             }
@@ -81,7 +98,7 @@ public class MainMenu : MonoBehaviour
             buttonFall.interactable = false;
         }
         // informar al usuario
-        if ((PlayerPrefs.GetInt("SummerMaxScore") <= 0) && (PlayerPrefs.GetInt("SpringMaxScore" ) >= scoreMeta2))
+        if ((PlayerPrefs.GetInt("SummerMaxScore") <= 0) && (PlayerPrefs.GetInt("SpringMaxScore" ) >= scoreMetaSummer))
         {
             scoreTextSummer.text = " DESBLOQUEADO";
         }
@@ -89,11 +106,11 @@ public class MainMenu : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("SummerMaxScore") > 0)
             {
-                scoreTextSummer.text = " MAX: " + PlayerPrefs.GetInt("SummerMaxScore");
+                scoreTextSummer.text = " PUNTOS: " + PlayerPrefs.GetInt("SummerMaxScore");
             }
             else
             {
-                scoreTextSummer.text = $" NECESITAS {scoreMeta2} PUNTOS";
+                scoreTextSummer.text = $" NECESITAS {scoreMetaSummer} PUNTOS";
             }
         }
         // fin Verano score
@@ -102,7 +119,7 @@ public class MainMenu : MonoBehaviour
         // Otoño score
         if (PlayerPrefs.HasKey("FallMaxScore"))
         {
-            if (scoreMeta4 <= PlayerPrefs.GetInt("FallMaxScore"))
+            if (scoreMetaWinter <= PlayerPrefs.GetInt("FallMaxScore"))
             {
                 buttonWinter.interactable = true;
             }
@@ -119,7 +136,7 @@ public class MainMenu : MonoBehaviour
             buttonWinter.interactable = false;
         }
         // informar al usuario
-        if ((PlayerPrefs.GetInt("FallMaxScore") <= 0) && (PlayerPrefs.GetInt("SummerMaxScore") >= scoreMeta3))
+        if ((PlayerPrefs.GetInt("FallMaxScore") <= 0) && (PlayerPrefs.GetInt("SummerMaxScore") >= scoreMetaFall))
         {
             scoreTextFall.text = " DESBLOQUEADO";
         }
@@ -127,11 +144,11 @@ public class MainMenu : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("FallMaxScore") > 0)
             {
-                scoreTextFall.text = " MAX: " + PlayerPrefs.GetInt("FallMaxScore");
+                scoreTextFall.text = " PUNTOS: " + PlayerPrefs.GetInt("FallMaxScore");
             }
             else
             {
-                scoreTextFall.text = $" NECESITAS {scoreMeta3} PUNTOS";
+                scoreTextFall.text = $" NECESITAS {scoreMetaFall} PUNTOS";
             }
         }
         // fin Otoño score
@@ -146,7 +163,7 @@ public class MainMenu : MonoBehaviour
            
         }
         // informar al usuario
-        if ((PlayerPrefs.GetInt("WinterMaxScore") <= 0) && (PlayerPrefs.GetInt("FallMaxScore") >= scoreMeta4))
+        if ((PlayerPrefs.GetInt("WinterMaxScore") <= 0) && (PlayerPrefs.GetInt("FallMaxScore") >= scoreMetaWinter))
         {
             scoreTextWinter.text = " DESBLOQUEADO";
         }
@@ -154,20 +171,23 @@ public class MainMenu : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("WinterMaxScore") > 0)
             {
-                scoreTextWinter.text = " MAX: " + PlayerPrefs.GetInt("WinterMaxScore");
+                scoreTextWinter.text = " PUNTOS: " + PlayerPrefs.GetInt("WinterMaxScore");
             }
             else
             {
-                scoreTextWinter.text = $" NECESITAS {scoreMeta4} PUNTOS";
+                scoreTextWinter.text = $" NECESITAS {scoreMetaWinter} PUNTOS";
             }
         }
+        
         // fin Invierno score
 
-        //buttonSummer.interactable = unlockScene2 ? true : false;
 
-        //buttonFall.interactable = unlockScene3 ? true : false;
+        */
+        //buttonSummer.interactable = unlockSceneSummer ? true : false;
 
-        //buttonWinter.interactable = unlockScene4 ? true : false;
+        //buttonFall.interactable = unlockSceneFall ? true : false;
+
+        //buttonWinter.interactable = unlockSceneWinter ? true : false;
     }
 
 
@@ -213,5 +233,68 @@ public class MainMenu : MonoBehaviour
         // reingresa al menu con las alteraciones
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+    }
+
+
+    // mejoras del codigo
+    public void CheckKeyScoreAndUnlockLevel(string nameKey, int targetScoreNextSeason, Button buttonNextSeason)
+    {
+        // si ya se creo el PlayerPrefs
+        if (PlayerPrefs.HasKey(nameKey))
+        {
+            // en el caso del ultimo nivel targerScoreNextSeason sera 0
+            if (targetScoreNextSeason > 0)
+            {
+                if (PlayerPrefs.GetInt(nameKey) >= targetScoreNextSeason)
+                {
+                    // activa el boton
+                    buttonNextSeason.interactable = true;
+                }
+                else
+                {
+                    buttonNextSeason.interactable = false;
+                }
+            }
+                
+        }
+        else
+        {
+            PlayerPrefs.SetInt(nameKey, 0);
+            if(targetScoreNextSeason > 0)
+            {
+                buttonNextSeason.interactable = false;
+            }
+            
+        }
+
+    }
+
+    public void UpdateScoreText(string nameKey, string previousNameKey, int targetScore, TMP_Text textScore )
+    {
+        // en el caso del primer nivel
+        if (previousNameKey == "" || previousNameKey == " ")
+        {
+            textScore.text = $" PUNTOS: {PlayerPrefs.GetInt(nameKey)}";
+        }
+        else
+        {
+            // informar al usuario si se debloqueado el nivel
+   
+            if ((PlayerPrefs.GetInt(nameKey) <= 0) && (PlayerPrefs.GetInt(previousNameKey) >= targetScore))
+            {
+                textScore.text = " DESBLOQUEADO";
+            }
+            else
+            {
+                if (PlayerPrefs.GetInt(nameKey) > 0)
+                {
+                    textScore.text = $" PUNTOS: {PlayerPrefs.GetInt(nameKey)}";
+                }
+                else 
+                {
+                    textScore.text = $" NECESITAS {targetScore} PUNTOS";
+                }
+            }
+        }
     }
 }
