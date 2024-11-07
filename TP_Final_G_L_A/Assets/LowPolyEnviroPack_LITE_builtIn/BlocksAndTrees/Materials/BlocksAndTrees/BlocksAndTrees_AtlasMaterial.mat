@@ -64,9 +64,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Backward_Strength: 0.0007018092
+    - _Backward_Strength: 0.000845603
     - _Glossiness: 0.09
-    - _Sideway_Strength: -0.0016623717
+    - _Sideway_Strength: -0.004351526
     - _Tile_Strength: 1
     m_Colors:
     - _EmissionColor: {r: 0.6964404, g: 0.6964404, b: 0.6964404, a: 1}
